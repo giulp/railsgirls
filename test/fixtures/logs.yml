@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  valore: 1
+  note: MyText
+  category_id: 
+
+two:
+  valore: 1
+  note: MyText
+  category_id: 

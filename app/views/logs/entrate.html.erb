@@ -1,0 +1,25 @@
+<%- model_class = Log -%>
+<div class="page-header">
+  <h1>Entrate</h1>
+</div>
+<script type="text/javascript">
+  $(function() {
+    $('table#entrate').visualize({type: 'pie', width: '450px', height: '300px', pieMargin: 10});
+  });
+</script>
+<table class="table table-striped" id="entrate" style="margin-bottom: 40px">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:category_id) %></th>
+      <th><%= model_class.human_attribute_name(:valore) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @entrate.each do |k,v| %>
+      <tr>
+        <th><%= k  %></th>
+        <td><%= v %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

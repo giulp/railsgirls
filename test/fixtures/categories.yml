@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nome: MyString
+  tipo: false
+  periodico: false
+  data: 2014-05-22
+
+two:
+  nome: MyString
+  tipo: false
+  periodico: false
+  data: 2014-05-22
