@@ -14,6 +14,8 @@ mkdir -p lib/templates/erb/scaffold;
 
 vi lib/templates/erb/scaffold/_form.html.erb;
 
+->
+
 ```
 <%%= form_for(@<%= singular_table_name %>) do |f| %>
   <%% if @<%= singular_table_name %>.errors.any? %>
@@ -55,7 +57,7 @@ vi lib/templates/erb/scaffold/_form.html.erb;
 
 vi gemfile
 
---------------------------------------------------------------------------------------
+->
 
 decommento therubyracer
 
@@ -70,7 +72,7 @@ gem 'simple_form', '~> 2.0'
 
 vi config/application.rb
 
---------------------------------------------------------------------------------------
+->
 
 config.assets.enabled = true
 
