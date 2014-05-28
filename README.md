@@ -31,7 +31,7 @@ rake db:migrate RAILS_ENV=development;
 rails s
 
 --------------------------------------------------------------------------------------
-<pre>
+```
 <%%= form_for(@<%= singular_table_name %>) do |f| %>
   <%% if @<%= singular_table_name %>.errors.any? %>
     <div id="error_explanation">
@@ -68,7 +68,7 @@ rails s
     <%%= f.submit %>
   </div>
 <%% end %>
-<pre>
+```
 
 ----------------------------------------------------------------------------
 
