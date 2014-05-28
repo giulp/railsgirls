@@ -1,20 +1,36 @@
 Esercizio per railsgirls Udine 5 e 6 giugno 2014
 
 
+
+TODO: probabilmente per windows è più semplice usare sass-bootstrap
+
+
+
 rails new contabilita_domestica;
+
 cd contabilita_domestica;
+
 mkdir -p lib/templates/erb/scaffold;
+
 vi lib/templates/erb/scaffold/_form.html.erb;
+
 vi gemfile;
+
 vi config/application.rb
+
 bundle install;
+
 rails g bootstrap:install;
+
 rails g scaffold Category nome:string tipo:boolean periodico:boolean data:date;
+
 rails g scaffold Log valore:integer note:text category:references;
+
 rake db:migrate RAILS_ENV=development;
+
 rails s
 
-# --------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 <pre>
 <%%= form_for(@<%= singular_table_name %>) do |f| %>
   <%% if @<%= singular_table_name %>.errors.any? %>
@@ -53,14 +69,18 @@ rails s
   </div>
 <%% end %>
 <pre>
-# ----------------------------------------------------------------------------
 
-# decommento therubyracer
+----------------------------------------------------------------------------
 
-# twitter bootstrap
+decommento therubyracer
+
+twitter bootstrap
+
+
 gem 'twitter-bootstrap-rails'
+
 gem 'simple_form', '~> 2.0'
 
-# -------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 config.assets.enabled = true
