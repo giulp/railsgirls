@@ -33,6 +33,8 @@ rake db:migrate RAILS_ENV=development
 
 routes
 
+modifica layout
+
 modifiche form e tabelle
 
 visualize
