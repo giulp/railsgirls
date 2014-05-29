@@ -5,15 +5,16 @@ rails new contabilita_domestica;
 
 cd contabilita_domestica;
 
-(Sublime Text - aptana - notepad ++) gemfile
-
 --------------------------------------------------------------------------------------
 
-->
+(Sublime Text - aptana - notepad ++) gemfile
+
+-----------------
 
 decommento therubyracer
 
 gem 'bootstrap-sass'
+
 gem 'bootstrap-generators'
 
 --------------------------------------------------------------------------------------
@@ -28,9 +29,15 @@ rails g scaffold Log valore:integer note:text category:references
 
 rake db:migrate RAILS_ENV=development
 
+
+
 routes
+
 modifiche form e tabelle
+
 visualize
+
+
 
 rails s
 
