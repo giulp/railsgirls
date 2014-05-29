@@ -1,9 +1,9 @@
 Esercizio per railsgirls Udine 5 e 6 giugno 2014
 
 
-rails new contabilita_domestica;
+rails new contabilita_domestica
 
-cd contabilita_domestica;
+cd contabilita_domestica
 
 --------------------------------------------------------------------------------------
 
