@@ -134,7 +134,7 @@ La tabella logs contiene una chiave esterna, denominata 'category_id', che assoc
 Utilizzeremo sqlite, che è il database di default per le applicazioni rails
 
 
-(_ il programma che ho utilizzato per generare il diagramma sotto non mi permetteva di impostare un campo booleano _)
+( _il programma che ho utilizzato per generare il diagramma sotto non mi permetteva di impostare un campo booleano_ )
 
 ![Diagramma E/R](contabilita_domestica.png "Diagramma E/R")
 
