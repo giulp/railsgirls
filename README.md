@@ -154,7 +154,7 @@ Di cosa abbiamo bisogno ? Dal punto di vista logico pare che abbiamo essenzialme
 
 Ci viene in aiuto il comando **rails generate scaffold**, che ci permette di creare questi elementi, ma non si ferma qui. Genera infatti anche le migrations necessarie a creare concreatamente il database. Specifichiamo la struttura della tabella come parametri al comando
 
-_**rails g scaffold Category nome:string tipo:boolean periodico:boolean data:date**_
+_**rails g scaffold Category nome:string tipo:boolean data:date**_
 
 _**rails g scaffold Log valore:integer note:text category:references**_
 
