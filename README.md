@@ -118,7 +118,7 @@ Consiglio di leggere l'output del programma, come spesso accade con rails è mol
 
 Una volta completata l'installazione delle gemme, **bootstrap** è disponibile e utilizzabile.
 
-Dicevo che rails dispone di diversi strumenti richiamabili da linea di comando che rendono la scrittura di un'applicazione divertente. Per la nostra applicazione ci faremo aiutare da un'utilità che nel gergo di rails si chiama generator. Un comando che genera automaticamente lo scheletro dei file che compongono l'applicazione (per ora magari credetemi sulla parola :) )
+Dicevo che rails dispone di diversi strumenti richiamabili da linea di comando che rendono la scrittura di un'applicazione divertente. Per la nostra applicazione ci faremo aiutare da un'utilità che nel gergo di rails si chiama generator. Un comando che genera automaticamente lo scheletro dei file che compongono l'applicazione (per ora magari credetemi sulla parola :smile: )
 
 Quello che manca per integrare completamente bootstrap nella nostra applicazione è la riconfigurazione automatica dei generators, che otteniamo digitando il comando
 
