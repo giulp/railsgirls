@@ -133,7 +133,7 @@ La utilizzeremo per determinare se la categoria sia di entrata (true) o di uscit
 La tabella logs contiene una chiave esterna, denominata 'category_id', che associa ogni riga di registro ad una categoria.
 Utilizzeremo sqlite, che è il database di default per le applicazioni rails
 
-![Smaller icon](contabilita_domestica.png "Diagramma E/R")
+![Diagramma E/R](contabilita_domestica.png "Diagramma E/R")
 
 #####Lasciamo che rails abbozzi la struttura dell'applicazione
 
