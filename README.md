@@ -138,15 +138,32 @@ Utilizzeremo sqlite, che è il database di default per le applicazioni rails
 
 ![Diagramma E/R](contabilita_domestica.png "Diagramma E/R")
 
+rails utilizza un sistema per gestire la struttura del database in modo da incorporarla nell'applicazione, basata su file in ruby definiti migrations. Le migrazioni incorporano nel nome del file la data quindi tramite questi file è possibile tener traccia delle modifiche effettuate sul db nel corso del tempo.
+
 ###Lasciamo che rails abbozzi la struttura dell'applicazione
 
+Bene.
 
-rails g scaffold Category nome:string tipo:boolean periodico:boolean data:date
+Siamo pronti per cominciare a lavorare sulla struttura reale dell'applicazione.
 
-rails g scaffold Log valore:integer note:text category:references
+Di cosa abbiamo bisogno ? Dal punto di vista logico pare che abbiamo essenzialmente due entità, il registro e l'elenco delle categorie. In base al MVC per ciascuna di esse dovremmo generare
 
-rake db:migrate RAILS_ENV=development
+- un model
+- una view
+- un controller
 
+Ci viene in aiuto il comando **rails generate scaffold**, che ci permette di creare questi elementi, ma non si ferma qui. Genera infatti anche le migrations necessarie a creare concreatamente il database. Specifichiamo la struttura della tabella come parametri al comando
+
+_**rails g scaffold Category nome:string tipo:boolean periodico:boolean data:date**_
+
+_**rails g scaffold Log valore:integer note:text category:references**_
+
+___
+E siamo finalmente pronti a generare il database con il comando
+
+_**rake db:migrate RAILS_ENV=development**_
+
+( *nota: utilizziamo la configurazione di default definita in* __config/database.yml__ )
 
 
 routes
