@@ -158,12 +158,13 @@ _**rails g scaffold Category nome:string tipo:boolean data:date**_
 
 _**rails g scaffold Log valore:integer note:text category:references**_
 
+( _notate la sintassi utilizzata per definire una chiave esterna_ )
 ___
 E siamo finalmente pronti a generare il database con il comando
 
 _**rake db:migrate RAILS_ENV=development**_
 
-( *nota: utilizziamo la configurazione di default definita in* __config/database.yml__ )
+( *utilizziamo la configurazione di default definita in* __config/database.yml__ )
 ___
 
 
