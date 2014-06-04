@@ -164,6 +164,8 @@ E siamo finalmente pronti a generare il database con il comando
 _**rake db:migrate RAILS_ENV=development**_
 
 ( *nota: utilizziamo la configurazione di default definita in* __config/database.yml__ )
+___
+
 
 
 routes
