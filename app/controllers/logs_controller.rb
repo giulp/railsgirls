@@ -25,15 +25,11 @@ class LogsController < ApplicationController
   def entrate
     t = 'Entrate'
     @entrate = Log.includes(:category).where('categories.tipo = ?', true).group("categories.nome").sum(:valore)
-    # @totale = 0
-    # @entrate.each{|riga| @totale += riga.sum}
   end
 
   def uscite
     t = 'Uscite'
     @uscite = Log.includes(:category).where('NOT categories.tipo = ?', true).group("categories.nome").sum(:valore)
-    # @totale = 0
-    # @uscite.each{|riga| @totale -= riga.sum}
   end
 
   # GET /logs/new

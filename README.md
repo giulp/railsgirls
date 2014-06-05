@@ -229,6 +229,12 @@ creiamo le funzioni **entrate** e **uscite** copiando il riquadro qui sotto
 ---
 Ora le viste:
 
+Modifichiamo il file **app/assets/stylesheets/application.css.scss** inserendo la riga che indica a rails di includere gli stili di bootstrap
+
+```
+@import "bootstrap";
+```
+
 Creiamo il file **app/views/logs/entrate.html.erb** con il seguente contenuto
 
 ```
@@ -297,16 +303,92 @@ e creiamo il file **app/views/logs/uscite.html.erb** con il seguente contenuto
 ```
 
 
+Modifichiamo il layout generale del'applicazione per utilizzare un'impaginazione a due colonne, gazie a bootstrap è un'operazione rapida e semplice. Nella colonna di destra potremo inserire del testo esplicativo
 
-modifica layout
+Apriamo il file **app/views/layouts/application.heml.erb** emodifichiamolo in modo che corrisponda al riquadro sotto
 
-modifiche form e tabelle
+```
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <title>ContabilitaDomestica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-visualize
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <%= javascript_include_tag "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js", "https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js" %>
+    <![endif]-->
+
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "Contabilità Domestica", "#", :class => "navbar-brand" %>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to "Entrate", 'entrate' %></li>
+            <li><%= link_to "Uscite", 'uscite' %></li>
+            <li><%= link_to "Categorie", categories_path %></li>
+            <li><%= link_to "Registro", logs_path %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do %>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= msg %>
+        <% end %>
+      <% end %>
+      <div class="row">
+        <div class="col-md-8"><%= yield %></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+          <h2>Come funziona</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
+
+```
+Per visualizzare i grafici non ci resta che copiare 
+
+- il file **visualize.jQuery.js** all'interno della cartella **app/assets/javascripts**
+- il file **visualize.css** all'interno della cartella **app/assets/stylesheets** 
+
+Sarà rails ora ad includere i file nel progetto
+
+( _notare le righe che contengono **'require_tree .'** in_ **app/assets/javascripts/application.js** _e_ **app/assets/stylesheets/application.css.scss** )
 
 
+## ... rullo di tamburi ...
 
-rails s
+Digitiamo
+
+_**rails s**_
+
+apriamo il browser e visitiamo la pagina **http://localhost:3000/**
+
+Se tutto è andato a buon fine dovremmo trovarci davanti alla nostra prima applicazione in ruby on rails, con tanto di twitter bootstrap e jquery visualize
+
+Complimenti e grazie !
 
 :feet:
 
