@@ -205,11 +205,18 @@ sostituiamo la funzione **index** copiando il riquadro che segue
 
     # oppure così
     #
-    # @logs.each{ |riga|
-    #   if riga.category.tipo == true then @totale = @totale + riga.valore
-    #   else @totale = @totale - riga.valore
+    # @logs.each do |riga|
+    #
+    #   if riga.category.tipo == true
+    #
+    #     @totale = @totale + riga.valore
+    #
+    #   else
+    #
+    #     @totale = @totale - riga.valore
+    #
     #   end
-    # }
+    # end
   end
 ```
 
@@ -368,10 +375,10 @@ Apriamo il file **app/views/layouts/application.heml.erb** emodifichiamolo in mo
   </html>
 
 ```
-Per visualizzare i grafici non ci resta che copiare 
+Per visualizzare i grafici non ci resta che copiare
 
 - il file **visualize.jQuery.js** all'interno della cartella **app/assets/javascripts**
-- il file **visualize.css** all'interno della cartella **app/assets/stylesheets** 
+- il file **visualize.css** all'interno della cartella **app/assets/stylesheets**
 
 Sarà rails ora ad includere i file nel progetto
 
