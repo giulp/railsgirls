@@ -389,7 +389,3 @@ apriamo il browser e visitiamo la pagina **http://localhost:3000/**
 Se tutto è andato a buon fine dovremmo trovarci davanti alla nostra prima applicazione in ruby on rails, con tanto di twitter bootstrap e jquery visualize
 
 Complimenti e grazie !
-
-:feet:
-
-:see_no_evil: :hear_no_evil: :speak_no_evil:
