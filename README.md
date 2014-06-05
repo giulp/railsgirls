@@ -152,7 +152,7 @@ Di cosa abbiamo bisogno ? Dal punto di vista logico pare che abbiamo essenzialme
 - una view
 - un controller
 
-Ci viene in aiuto il comando **rails generate scaffold**, che ci permette di creare questi elementi, ma non si ferma qui. Genera infatti anche le migrations necessarie a creare concreatamente il database. Specifichiamo la struttura della tabella come parametri al comando
+Ci viene in aiuto il comando **rails generate scaffold**, che ci permette di creare questi elementi, ma non si ferma qui. Tra le altre cose genera anche le migrations necessarie a creare concreatamente il database. Specifichiamo la struttura della tabella come parametri al comando
 
 _**rails g scaffold Category nome:string tipo:boolean data:date**_
 
@@ -168,8 +168,135 @@ _**rake db:migrate RAILS_ENV=development**_
 ___
 
 
+###Configurazione e aggiustamenti
 
-routes
+rails è magico.
+
+L'applicazione comincia ad avere una forma, le linee di codice effettivamente scritte sono due, e riguardano le librerie utilizzate.
+
+Potremmo anche avviare il server e vedere come si presenta la nostra applicazione, ma prima vediamo di aggiungere alcuni parametri di configurazione e modificare quanto serve la presentazione dei dati.
+
+Il file **config/routes.rb** serve per indicare a rails la corrispondenza tra una url come inserita nella barra dell'indirizzo e la coppia controller/funzione a cui questa fa riferimento
+
+Apriamo **config/routes.rb** ed inseriamo le righe
+
+```
+# alla url 'entrate' corrisponde la funzione entrate nel controller logs
+get 'entrate' => 'logs#entrate'
+
+# alla url 'uscite' corrisponde la funzione uscite nel controller logs
+get 'uscite' => 'logs#uscite'
+
+# la pagina principale del progetto corrisponde alla funzione index del controller logs
+root 'logs#index'
+```
+
+E' necessario ora creare le funzioni menzionate nel paragrafo precedente all'interno del controller **app/controllers/logs_controller.rb** e per ciscuna di esse preparare la vista corrispondente nella cartella **app/views**
+
+Apriamo il file **app/controllers/logs_controller.rb**
+
+sostituiamo la funzione **index** copiando il riquadro che segue
+
+```
+  def index
+    @logs = Log.all
+    @totale = 0
+    @logs.each{|riga| riga.category.tipo ? @totale += riga.valore : @totale -= riga.valore}
+
+    # oppure così
+    #
+    # @logs.each{ |riga|
+    #   if riga.category.tipo == true then @totale = @totale + riga.valore
+    #   else @totale = @totale - riga.valore
+    #   end
+    # }
+  end
+```
+
+creiamo le funzioni **entrate** e **uscite** copiando il riquadro qui sotto
+
+```
+  def entrate
+    t = 'Entrate'
+    @entrate = Log.includes(:category).where('categories.tipo = ?', true).group("categories.nome").sum(:valore)
+  end
+
+  def uscite
+    t = 'Uscite'
+    @uscite = Log.includes(:category).where('NOT categories.tipo = ?', true).group("categories.nome").sum(:valore)
+  end
+```
+---
+Ora le viste:
+
+Creiamo il file **app/views/logs/entrate.html.erb** con il seguente contenuto
+
+```
+  <%- model_class = Log -%>
+  <div class="page-header">
+    <h1>Entrate</h1>
+  </div>
+  <script type="text/javascript">
+  	// il javascript per il grafico
+    $(function() {
+      $('table#entrate').visualize({
+      	type: 'pie',
+      	width: '450px',
+      	height: '300px',
+      	pieMargin: 10
+      });
+    });
+  </script>
+  <table class="table table-striped" id="entrate" style="margin-bottom: 40px">
+    <thead>
+      <tr>
+        <th><%= model_class.human_attribute_name(:category_id) %></th>
+        <th><%= model_class.human_attribute_name(:valore) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @entrate.each do |k,v| %>
+        <tr>
+          <th><%= k  %></th>
+          <td><%= v %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+```
+
+e creiamo il file **app/views/logs/uscite.html.erb** con il seguente contenuto
+
+```
+  <%- model_class = Log -%>
+  <div class="page-header">
+    <h1>Uscite</h1>
+  </div>
+  <script type="text/javascript">
+    $(function() {
+      $('table#uscite').visualize({type: 'pie', width: '450px', height: '300px', pieMargin: 10});
+    });
+  </script>
+  <table class="table table-striped" id="uscite" style="margin-bottom: 40px">
+    <thead>
+      <tr>
+        <th><%= model_class.human_attribute_name(:category_id) %></th>
+        <th><%= model_class.human_attribute_name(:valore) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @uscite.each do |k,v| %>
+        <tr>
+          <th><%= k  %></th>
+          <td><%= v %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+```
+
+
 
 modifica layout
 

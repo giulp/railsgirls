@@ -1,6 +1,5 @@
 ContabilitaDomestica::Application.routes.draw do
   resources :logs
-
   resources :categories
 
   get 'benvenuto' => 'benvenuto#index'
