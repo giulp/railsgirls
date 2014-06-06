@@ -308,7 +308,27 @@ e creiamo il file **app/views/logs/uscite.html.erb** con il seguente contenuto
     </tbody>
   </table>
 ```
+Ora modifichiamo il file **app/views/logs/_form.html.erb** e sostituiamo il blocco
 
+```
+  <div class="form-group">
+    <%= f.label :category_id, :class => 'form-label' %>
+    <div class="controls">
+      <%= f.text_field :category, :class => 'form-control' %>
+    </div>
+  </div>
+```
+
+con
+
+```
+  <div class="form-group">
+    <%= f.label :category_id, :class => 'form-label' %>
+    <div class="controls">
+      <%= f.collection_select :category_id, Category.all, :id, :nome, prompt: false %>
+    </div>
+  </div>
+```
 
 Modifichiamo il layout generale del'applicazione per utilizzare un'impaginazione a due colonne, gazie a bootstrap è un'operazione rapida e semplice. Nella colonna di destra potremo inserire del testo esplicativo
 
