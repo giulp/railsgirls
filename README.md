@@ -1,7 +1,7 @@
 # Contabilità domestica: un'introduzione al web development con ruby on rails
 
 
-#### [Railsgirls Udine - 5 e 6 giugno 2014](http://http://railsgirls.com/udine)
+#### [Railsgirls Udine - 5 e 6 giugno 2014](http://railsgirls.com/udine)
 
 
 ## Cosa e come:
@@ -332,7 +332,7 @@ con
 
 Modifichiamo il layout generale del'applicazione per utilizzare un'impaginazione a due colonne, gazie a bootstrap è un'operazione rapida e semplice. Nella colonna di destra potremo inserire del testo esplicativo
 
-Apriamo il file **app/views/layouts/application.heml.erb** emodifichiamolo in modo che corrisponda al riquadro sotto
+Apriamo il file **app/views/layouts/application.heml.erb** e modifichiamolo in modo che corrisponda al riquadro sotto
 
 ```
   <!DOCTYPE html>
